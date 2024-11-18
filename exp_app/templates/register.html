@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block main_block%}
+<div class="container">
+    <div class="row justify-content-center align-items-center vh-100">
+
+        <div class="col-lg-6 col-10">
+            <img src="{%static 'images/reg.png'%}" alt="" style="height: 25rem;">
+        </div>
+
+        <div class="col-lg-6 col-10 shadow rounded border p-5">
+            <h3 class="text-center">Register</h3>
+            <form action="" method="post">
+                {%csrf_token%}
+
+                {{form.as_p}}
+
+                <p>Already have an Account? <a href="{%url 'signin'%}">Login</a></p>
+
+                <div class="row mt-3">
+                    <div class="col-6 d-grid">
+                        <button type="submit" class="btn btn-success"><i class="bi bi-person-fill-add"></i> Register</button>
+                    </div>
+                    <div class="col-6 d-grid">
+                        <button type="reset" class="btn btn-danger"><i class="bi bi-x-square"></i> Reset</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+{%endblock%}

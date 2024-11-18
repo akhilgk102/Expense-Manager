@@ -1,0 +1,87 @@
+{%extends 'user_base.html'%}
+{%load static%}
+{%block main_block%}
+
+<section>
+    <div class="container">
+        <div class="row justify-content-center align-items-center vh-100">
+    
+            <div class="col-lg-6 col-10">
+                <img src="{%static 'images/money.png'%}" alt="" style="height: 30rem;">
+            </div>
+    
+            <div class="col-lg-6 col-10 shadow rounded border p-5">
+                <h3 class="text-center">Add Today Expense</h3>
+                <form action="" method="post">
+                    {%csrf_token%}
+    
+                    {{form.as_p}}
+    
+                    <div class="row mt-3">
+                        <div class="col-6 d-grid">
+                            <button type="submit" class="btn btn-success"> Submit</button>
+                        </div>
+                        <div class="col-6 d-grid">
+                            <button type="reset" class="btn btn-danger"> Reset</button>
+                        </div>
+                    </div>
+                </form>
+    
+            </div>
+        </div>
+    </div>
+    
+</section>
+
+<section class="container mb-5 ">
+
+    <h2 class="text-center mb-5">All Expenses</h2>
+
+    <div class="row">
+
+            <table class="table table-striped border">
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Payment</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col" class="text-center">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {%for d in data%}
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>{{d.title}}</td>
+                    <td>{{d.category}}</td>
+                    <td>{{d.payment}}</td>
+                    <td class="fw-semibold"><h5>₹{{d.amount}}</h5></td>
+                    <td class="text-center">
+                        <a href="{%url 'expense-delete' d.id%}" class="btn btn-danger">Remove</a>
+                        <a href="{%url 'expense-update' d.id%}" class="btn btn-success">Update</a>
+                    </td>
+                  </tr>
+                  {%endfor%}
+                </tbody>
+              </table>
+            
+
+
+    </div>
+
+    <div class="row mt-5">
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Total Expenses: ₹{{total}}</h5>
+              <p class="card-text fw-semibold">Average: ₹{{average}}</p>
+            </div>
+          </div>
+
+    </div>
+    
+</section>
+
+{%endblock%}
