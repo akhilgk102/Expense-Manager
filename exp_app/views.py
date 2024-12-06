@@ -9,6 +9,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
 
 from django.db.models import Sum,Avg
+
 # Create your views here.
 
 decs=[signin_required,never_cache]
@@ -129,7 +130,6 @@ class ExpenseCreateView(View):
             exp_obj=ExpenseManager.objects.get(id=id)
 
         
-        
         # # Update View End
 
         form_instance=self.form_class(form_data,instance=exp_obj)
@@ -154,3 +154,13 @@ class ExpenseDeleteView(View):
         ExpenseManager.objects.get(id=id).delete()
 
         return redirect("expense-create")
+    
+
+class ExpenseSummaryView(View):
+    template_name="expense_summary.html"
+
+    def get(self,request,*args,**kwargs):
+
+        qs=ExpenseManager.objects.filter(owner=request.user)
+
+        return render(request,self.template_name,{"data":qs})

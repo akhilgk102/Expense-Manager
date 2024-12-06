@@ -16,11 +16,20 @@ class ExpenseManager(models.Model):
     title=models.CharField(max_length=200)
 
     category_options=(
-        ("Food","Food"),
-        ("Travel","Travel"),
-        ("Entertainment","Entertainment"),
-        ("Fashion","Fashion"),
-        ("Bill","Bill"),
+    ('Housing', 'Housing'),
+    ('Transportation', 'Transportation'),
+    ('Food', 'Food'),
+    ('Healthcare', 'Healthcare'),
+    ('Education', 'Education'),
+    ('Entertainment', 'Entertainment'),
+    ('Personal Care', 'Personal Care'),
+    ('Debt Payments', 'Debt Payments'),
+    ('Savings & Investments', 'Savings & Investments'),
+    ('Gifts & Donations', 'Gifts & Donations'),
+    ('Insurance', 'Insurance'),
+    ('Travel', 'Travel'),
+    ('Miscellaneous', 'Miscellaneous'),
+
     )
 
     category=models.CharField(choices=category_options,max_length=200)

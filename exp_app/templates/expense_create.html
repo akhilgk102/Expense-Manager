@@ -1,5 +1,7 @@
 {%extends 'user_base.html'%}
 {%load static%}
+
+{%block title%}Expense {%endblock%}
 {%block main_block%}
 
 <section>
@@ -57,7 +59,7 @@
                     <td>{{d.title}}</td>
                     <td>{{d.category}}</td>
                     <td>{{d.payment}}</td>
-                    <td class="fw-semibold"><h5>₹{{d.amount}}</h5></td>
+                    <td class=""><h5>₹{{d.amount}}</h5></td>
                     <td class="text-center">
                         <a href="{%url 'expense-delete' d.id%}" class="btn btn-danger">Remove</a>
                         <a href="{%url 'expense-update' d.id%}" class="btn btn-success">Update</a>

@@ -39,5 +39,5 @@ class ExpenseCreateForm(forms.ModelForm):
             "title":forms.TextInput(attrs={"class":"form-control","placeholder":"Enter Title"}),
             "category":forms.Select(choices=ExpenseManager.category_options,attrs={"class":"form-control form-select"}),
             "amount":forms.NumberInput(attrs={"class":"form-control","placeholder":"Enter Amount"}),
-            "payment":forms.Select(choices=ExpenseManager.payment_options,attrs={"class":"form-control"})
+            "payment":forms.Select(choices=ExpenseManager.payment_options,attrs={"class":"form-control form-select"})
         }
